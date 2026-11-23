@@ -1,1 +1,140 @@
 
+{
+  "sections": [
+    {
+      "id": "memorial",
+      "title": {
+        "fa": "یادمان",
+        "en": "Memorial"
+      },
+      "cards": [
+        {
+          "id": "memorial-1",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/memorial/card-1/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "memorial-2",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/memorial/card-2/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "memorial-3",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/memorial/card-3/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "memorial-4",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/memorial/card-4/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        }
+      ]
+    },
+    {
+      "id": "arts",
+      "title": {
+        "fa": "هنر",
+        "en": "Arts"
+      },
+      "cards": [
+        {
+          "id": "arts-1",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/arts/card-1/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "arts-2",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/arts/card-2/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "arts-3",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/arts/card-3/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "arts-4",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/arts/card-4/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        }
+      ]
+    },
+    {
+      "id": "aturpat",
+      "title": {
+        "fa": "آتورپات",
+        "en": "Aturpat"
+      },
+      "cards": [
+        {
+          "id": "aturpat-1",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/aturpat/card-1/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "aturpat-2",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/aturpat/card-2/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "aturpat-3",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/aturpat/card-3/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "aturpat-4",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/aturpat/card-4/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        }
+      ]
+    },
+    {
+      "id": "extensions",
+      "title": {
+        "fa": "پیوست‌ها",
+        "en": "Extensions"
+      },
+      "cards": [
+        {
+          "id": "extensions-1",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/extensions/card-1/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "extensions-2",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/extensions/card-2/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "extensions-3",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/extensions/card-3/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        },
+        {
+          "id": "extensions-4",
+          "title": { "fa": "", "en": "" },
+          "image": "public/images/menu/extensions/card-4/cover.jpg",
+          "pages": { "fa": "", "en": "" }
+        }
+      ]
+    }
+  ]
+}
+
+
+
