@@ -32,23 +32,61 @@
       <p></p>
     </section>
 
-    <nav class="side-controls">
+    
+<nav class="side-controls">
 
-      <div class="glass-panel">
-        <button class="control-button" aria-label="Menu">
-          <span>☰</span>
-        </button>
+  <!-- Home controls -->
+  <div class="glass-panel" id="homeControls">
+    <button class="control-button" id="menuButton" aria-label="Menu">
+      <span>☰</span>
+    </button>
 
-        <button class="control-button" aria-label="Home">
-          <span>⌂</span>
-        </button>
-      </div>
+    <button class="control-button" id="homeButton" aria-label="Home">
+      <span>⌂</span>
+    </button>
+  </div>
 
-      <button class="language-button">
-        EN
-      </button>
+  <!-- Language button -->
+  <button class="language-button" id="languageButton">
+    EN
+  </button>
 
-    </nav>
+  <!-- Expanded menu -->
+  <div class="menu-panel" id="menuPanel" hidden>
+
+    <!-- Main sections -->
+    <div id="mainMenu">
+      <button class="menu-section" data-section="memorial">یادمان</button>
+      <button class="menu-section" data-section="arts">هنر</button>
+      <button class="menu-section" data-section="aturpat">آتورپات</button>
+      <button class="menu-section" data-section="connections">پیوست‌ها</button>
+    </div>
+
+    <!-- Subcategory cards -->
+    <div class="menu-grid" id="menuGrid" hidden>
+
+      <a class="menu-card" href="#" data-page="1">
+        <span class="menu-card-title"></span>
+      </a>
+
+      <a class="menu-card" href="#" data-page="2">
+        <span class="menu-card-title"></span>
+      </a>
+
+      <a class="menu-card" href="#" data-page="3">
+        <span class="menu-card-title"></span>
+      </a>
+
+      <a class="menu-card" href="#" data-page="4">
+        <span class="menu-card-title"></span>
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
+
 
   </main>
 
