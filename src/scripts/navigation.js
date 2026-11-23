@@ -1,6 +1,5 @@
 
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   const menuButton = document.getElementById("menuButton");
   const homeButton = document.getElementById("homeButton");
