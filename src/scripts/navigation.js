@@ -1,5 +1,6 @@
 
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   const menuButton = document.getElementById("menuButton");
   const homeButton = document.getElementById("homeButton");
@@ -38,15 +39,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     renderMainMenu();
 
-if (selectedSection) {
-  const section = menuData.sections.find(
-    (item) => item.id === selectedSection
-  );
+    if (selectedSection) {
+      const section = menuData.sections.find(
+        (item) => item.id === selectedSection
+      );
 
-  if (section) {
-    renderCards(section);
+      if (section) {
+        renderCards(section);
+      }
+    }
   }
-}
 
   function renderMainMenu() {
     mainMenu.innerHTML = "";
@@ -143,7 +145,7 @@ if (selectedSection) {
 
   if (homeButton) {
     homeButton.addEventListener("click", () => {
-      window.location.href = "/";
+      window.location.href = "./";
     });
   }
 
@@ -159,7 +161,3 @@ if (selectedSection) {
 
   updateLanguage();
 });
-
-
-
-
