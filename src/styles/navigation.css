@@ -140,3 +140,90 @@
 [hidden] {
   display: none !important;
 }
+
+
+
+
+/* Subcategory grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 14px);
+  margin-top: 14px;
+}
+
+/* Complete square cards */
+.menu-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.10);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Card image added later */
+.menu-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Title stays inside the bottom 10% */
+.menu-card-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 10%;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: clamp(10px, 1vw, 14px);
+  text-align: center;
+  z-index: 2;
+}
+
+/* Soft blur and fade */
+.menu-card-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  mask-image: linear-gradient(
+    to top,
+    black 0%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to top,
+    black 0%,
+    transparent 100%
+  );
+}
+
+/* Keep title text above the blur */
+.menu-card-title {
+  isolation: isolate;
+}
