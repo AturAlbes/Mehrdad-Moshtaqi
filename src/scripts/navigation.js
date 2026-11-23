@@ -1,33 +1,116 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", async () => {
   const menuButton = document.getElementById("menuButton");
   const homeButton = document.getElementById("homeButton");
   const menuPanel = document.getElementById("menuPanel");
   const homeControls = document.getElementById("homeControls");
   const mainMenu = document.getElementById("mainMenu");
   const menuGrid = document.getElementById("menuGrid");
-  const sideControls = document.querySelector(".side-controls");
+  const languageButton = document.getElementById("languageButton");
 
-  if (!menuButton || !menuPanel || !mainMenu || !menuGrid) {
+  let currentLanguage = localStorage.getItem("siteLanguage") || "fa";
+  let menuData = null;
+  let selectedSection = null;
+
+  try {
+    const response = await fetch("content/menu.json");
+
+    if (!response.ok) {
+      throw new Error("Could not load menu.json");
+    }
+
+    menuData = await response.json();
+  } catch (error) {
+    console.error("Menu loading error:", error);
     return;
   }
 
-  // Open and close the expanded menu
+  function updateLanguage() {
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir =
+      currentLanguage === "fa" ? "rtl" : "ltr";
+
+    if (languageButton) {
+      languageButton.textContent =
+        currentLanguage === "fa" ? "EN" : "FA";
+    }
+
+    renderMainMenu();
+    if (selectedSection) {
+      renderCards(selectedSection);
+    }
+  }
+
+  function renderMainMenu() {
+    mainMenu.innerHTML = "";
+
+    menuData.sections.forEach((section) => {
+      const button = document.createElement("button");
+
+      button.className = "menu-section";
+      button.textContent = section.title[currentLanguage];
+      button.type = "button";
+
+      button.addEventListener("click", () => {
+        if (selectedSection === section.id) {
+          selectedSection = null;
+          menuGrid.hidden = true;
+          renderMainMenu();
+        } else {
+          selectedSection = section.id;
+          renderMainMenu();
+          renderCards(section);
+        }
+      });
+
+      if (selectedSection && selectedSection !== section.id) {
+        button.hidden = true;
+      }
+
+      mainMenu.appendChild(button);
+    });
+  }
+
+  function renderCards(section) {
+    menuGrid.innerHTML = "";
+
+    section.cards.forEach((card) => {
+      const link = document.createElement("a");
+      link.className = "menu-card";
+      link.href = card.pages[currentLanguage] || "#";
+
+      const image = document.createElement("img");
+      image.src = card.image;
+      image.alt = card.title[currentLanguage] || "";
+
+      const title = document.createElement("span");
+      title.className = "menu-card-title";
+      title.textContent = card.title[currentLanguage] || "";
+
+      link.appendChild(image);
+      link.appendChild(title);
+      menuGrid.appendChild(link);
+    });
+
+    menuGrid.hidden = false;
+  }
+
   function openMenu() {
     menuPanel.hidden = false;
     homeControls.hidden = true;
-    mainMenu.hidden = false;
+    selectedSection = null;
     menuGrid.hidden = true;
+    renderMainMenu();
   }
 
   function closeMenu() {
     menuPanel.hidden = true;
     homeControls.hidden = false;
-    mainMenu.hidden = false;
+    selectedSection = null;
     menuGrid.hidden = true;
   }
 
-  // Menu button
   menuButton.addEventListener("click", (event) => {
     event.stopPropagation();
 
@@ -38,35 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Select a main section
-  mainMenu.querySelectorAll(".menu-section").forEach((button) => {
-    button.addEventListener("click", () => {
-      mainMenu.querySelectorAll(".menu-section").forEach((item) => {
-        item.hidden = true;
-      });
-
-      button.hidden = false;
-      menuGrid.hidden = false;
-    });
-  });
-
-  // Clicking the selected section again returns to the main menu
-  mainMenu.addEventListener("click", (event) => {
-    const button = event.target.closest(".menu-section");
-
-    if (button && button.dataset.selected === "true") {
-      mainMenu.querySelectorAll(".menu-section").forEach((item) => {
-        item.hidden = false;
-        item.dataset.selected = "false";
-      });
-
-      menuGrid.hidden = true;
-    } else if (button) {
-      button.dataset.selected = "true";
-    }
-  });
-
-  // Close menu when clicking outside
   document.addEventListener("click", (event) => {
     if (
       !menuPanel.hidden &&
@@ -77,16 +131,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Home button
+  menuPanel.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
   if (homeButton) {
     homeButton.addEventListener("click", () => {
       window.location.href = "/";
     });
   }
 
-  // Prevent clicks inside the menu from closing it
-  menuPanel.addEventListener("click", (event) => {
-    event.stopPropagation();
-  });
+  if (languageButton) {
+    languageButton.addEventListener("click", () => {
+      currentLanguage =
+        currentLanguage === "fa" ? "en" : "fa";
+
+      localStorage.setItem("siteLanguage", currentLanguage);
+      updateLanguage();
+    });
+  }
+
+  updateLanguage();
 });
+
+
 
