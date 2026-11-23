@@ -102,3 +102,41 @@
     gap: clamp(8px, 2.5vw, 12px);
   }
 }
+
+
+
+/* Keep expanded menu fixed in the intended screen position */
+.menu-panel {
+  position: fixed;
+}
+
+/* Main section buttons */
+.menu-section {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-section:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Selected section */
+.menu-section[data-selected="true"] {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Hide elements when requested */
+[hidden] {
+  display: none !important;
+}
