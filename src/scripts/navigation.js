@@ -37,10 +37,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderMainMenu();
-    if (selectedSection) {
-      renderCards(selectedSection);
-    }
+
+if (selectedSection) {
+  const section = menuData.sections.find(
+    (item) => item.id === selectedSection
+  );
+
+  if (section) {
+    renderCards(section);
   }
+}
 
   function renderMainMenu() {
     mainMenu.innerHTML = "";
