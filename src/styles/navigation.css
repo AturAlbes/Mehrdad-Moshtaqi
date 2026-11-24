@@ -1,8 +1,9 @@
 
 
+
 /* Main navigation panel */
 .menu-panel {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 50%;
   right: 5%;
@@ -35,6 +36,7 @@
   border-radius: 14px;
   cursor: pointer;
   background: transparent;
+  display: block;
 }
 
 /* Future card images */
@@ -80,34 +82,12 @@
     transparent,
     black 75%
   );
+
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent,
     black 75%
   );
-}
-
-/* Mobile layout */
-@media (max-width: 700px) {
-  .menu-panel {
-    top: auto;
-    bottom: 28px;
-    right: 50%;
-    transform: translateX(50%);
-    width: min(90vw, 400px);
-    padding: clamp(12px, 3vw, 18px);
-  }
-
-  .menu-grid {
-    gap: clamp(8px, 2.5vw, 12px);
-  }
-}
-
-
-
-/* Keep expanded menu fixed in the intended screen position */
-.menu-panel {
-  position: fixed;
 }
 
 /* Main section buttons */
@@ -141,6 +121,22 @@
   display: none !important;
 }
 
+/* Mobile layout */
+@media (max-width: 700px) {
+  .menu-panel {
+    top: auto;
+    bottom: 115px;
+    right: 50%;
+    transform: translateX(50%);
 
+    width: min(90vw, 400px);
+    max-height: calc(100dvh - 150px);
+    overflow-y: auto;
 
+    padding: clamp(12px, 3vw, 18px);
+  }
 
+  .menu-grid {
+    gap: clamp(8px, 2.5vw, 12px);
+  }
+}
