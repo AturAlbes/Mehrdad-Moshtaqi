@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const menuGrid = document.getElementById("menuGrid");
   const languageButton = document.getElementById("languageButton");
 
-  let currentLanguage = localStorage.getItem("siteLanguage") || "fa";
+  let currentLanguage =
+    localStorage.getItem("siteLanguage") || "fa";
+
   let menuData = null;
   let selectedSection = null;
 
@@ -29,13 +31,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function updateLanguage() {
     document.documentElement.lang = currentLanguage;
+
     document.documentElement.dir =
       currentLanguage === "fa" ? "rtl" : "ltr";
 
-    if (languageButton) {
-      languageButton.textContent =
-        currentLanguage === "fa" ? "EN" : "FA";
-    }
+    languageButton.textContent =
+      currentLanguage === "fa" ? "EN" : "FA";
 
     renderMainMenu();
 
@@ -72,7 +73,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
 
-      if (selectedSection && selectedSection !== section.id) {
+      if (
+        selectedSection &&
+        selectedSection !== section.id
+      ) {
         button.hidden = true;
       }
 
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     section.cards.forEach((card) => {
       const link = document.createElement("a");
+
       link.className = "menu-card";
       link.href = card.pages[currentLanguage] || "#";
 
@@ -98,6 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       link.appendChild(image);
       link.appendChild(title);
+
       menuGrid.appendChild(link);
     });
 
@@ -129,33 +135,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  document.addEventListener("click", (event) => {
-    if (
-      !menuPanel.hidden &&
-      !menuPanel.contains(event.target) &&
-      !menuButton.contains(event.target)
-    ) {
-      closeMenu();
-    }
+  languageButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    currentLanguage =
+      currentLanguage === "fa" ? "en" : "fa";
+
+    localStorage.setItem("siteLanguage", currentLanguage);
+
+    updateLanguage();
   });
 
   menuPanel.addEventListener("click", (event) => {
     event.stopPropagation();
   });
 
+  document.addEventListener("click", (event) => {
+    if (
+      !menuPanel.hidden &&
+      !menuPanel.contains(event.target) &&
+      !menuButton.contains(event.target) &&
+      !languageButton.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
+
   if (homeButton) {
     homeButton.addEventListener("click", () => {
-      window.location.href = "./";
-    });
-  }
-
-  if (languageButton) {
-    languageButton.addEventListener("click", () => {
-      currentLanguage =
-        currentLanguage === "fa" ? "en" : "fa";
-
-      localStorage.setItem("siteLanguage", currentLanguage);
-      updateLanguage();
+      window.location.href = "./index.html";
     });
   }
 
